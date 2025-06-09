@@ -69,49 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize EmailJS for contact form
-    function initEmailJS() {
-        // Replace with your EmailJS public key
-        emailjs.init("YOUR_PUBLIC_KEY");
-    }
-
-    // Contact Form Submission
-    const emailForm = document.getElementById('emailForm');
-    const formStatus = document.getElementById('form-status');
-    
-    if (emailForm) {
-        emailForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Make sure EmailJS is initialized
-            if (typeof emailjs !== 'undefined') {
-                formStatus.textContent = languageData[currentLanguage].contact.form.sending || 'Sending...';
-                
-                // Replace with your EmailJS service ID and template ID
-                emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', this)
-                    .then(() => {
-                        formStatus.textContent = languageData[currentLanguage].contact.form.success || 'Message sent successfully!';
-                        formStatus.style.color = 'green';
-                        emailForm.reset();
-                        setTimeout(() => {
-                            formStatus.textContent = '';
-                        }, 5000);
-                    }, (error) => {
-                        formStatus.textContent = languageData[currentLanguage].contact.form.error || 'Failed to send message. Please try again.';
-                        formStatus.style.color = 'red';
-                        console.error('Email Error:', error);
-                    });
-            } else {
-                formStatus.textContent = 'EmailJS not loaded. Please try again later.';
-                formStatus.style.color = 'red';
-            }
-        });
-    }
-
-    // Initialize EmailJS
-    if (typeof emailjs !== 'undefined') {
-        initEmailJS();
-    }
+        // Contact form now uses FormSubmit.co service
 
     // Set current year in footer
     const yearElement = document.getElementById('current-year');
