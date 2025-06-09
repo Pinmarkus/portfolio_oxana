@@ -262,26 +262,16 @@ header .container {
 /* Hero Section */
 .hero {
     height: 100vh;
-    position: relative;
+    background: linear-gradient(to bottom, rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.8)), url('../img/header.png');
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     text-align: center;
     color: white;
     margin-top: 0;
+    position: relative;
     overflow: hidden;
-    background-color: #111827;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('../img/header.png') no-repeat center center;
-    background-size: 50% auto;
-    opacity: 0.35;
-    z-index: 1;
 }
 
 .hero::before {
@@ -953,11 +943,7 @@ footer::before {
         margin-bottom: 30px;
     }
     
-    /* Improved hero image for mobile */
-    .hero-overlay {
-        background-size: 80% auto;
-        opacity: 0.2;
-    }
+    /* Hero section mobile adjustments */
     
     /* Section padding adjustments */
     section {
