@@ -95,29 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         yearElement.textContent = new Date().getFullYear();
     }
     
-    // Handle lazy loaded images
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.onload = () => img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for browsers that don't support IntersectionObserver
-        lazyImages.forEach(img => {
-            img.classList.add('loaded');
-        });
-    }
+    // Make sure all images are visible
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        img.removeAttribute('loading');
+    });
 
     // Apply initial language
     const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
