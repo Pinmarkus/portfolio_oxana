@@ -1302,88 +1302,296 @@ footer::before {
 
 /* Mobile Optimization Adjustments */
 @media (max-width: 768px) {
-    /* Existing mobile styles */
-    
-    /* Adjust specialization grid to single column with wider cards on mobile */
-    .specialization-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    /* Header and navigation optimizations */
+    header .container {
+        padding: 10px 15px;
     }
     
-    /* Center card icons more effectively on mobile */
-    .card-icon {
-        margin: 0 auto 20px;
-        width: 55px;
-        height: 55px;
+    .logo h1 {
+        font-size: 1.5rem;
     }
     
-    /* Ensure text is centered on mobile */
-    .specialization-card h3 {
-        text-align: center;
+    .subtitle {
+        font-size: 0.8rem;
     }
     
-    /* Improve list display on mobile */
-    .tech-list {
-        max-width: 100%;
+    /* Ensure menu is properly styled and animated */
+    .menu-btn {
+        display: flex;
+        z-index: 100;
+    }
+    
+    nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 0 0 15px 15px;
+        display: none;
+        transition: all 0.3s ease;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 99;
+    }
+    
+    nav.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Hero section optimizations */
+    .hero-content {
         padding: 0 15px;
     }
     
-    .tech-list li {
-        text-align: left;
-        padding-left: 25px;
-        margin-left: 0;
-        margin-right: 0;
+    .hero-content h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
     }
     
-    /* Adjust gallery for better mobile viewing */
-    .image-gallery {
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    /* Section padding adjustments */
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+    
+    /* About section optimizations */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .about-image {
+        margin: 0 auto 20px;
+    }
+    
+    .about-image img {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    /* Services grid optimizations */
+    .services-grid,
+    .specialization-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     
-    /* Make form elements more touch-friendly */
-    .form-group input,
-    .form-group textarea {
-        padding: 15px;
-        font-size: 16px; /* Prevent zoom on focus in iOS */
+    .service-card,
+    .specialization-card {
+        padding: 25px 20px;
     }
     
-    /* Make submit button wider on mobile */
-    .contact-form .btn-primary {
-        width: 100%;
-        padding: 15px;
+    .service-icon,
+    .card-icon {
+        margin: 0 auto 25px;
+        width: 60px;
+        height: 60px;
     }
     
-    /* Adjust tech-list padding and li padding */
+    .service-icon i,
+    .card-icon i {
+        font-size: 1.5rem;
+    }
+    
+    /* Specialization section optimizations */
+    .specialization-card h3 {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    
     .tech-list {
+        max-width: 100%;
         padding: 0;
     }
     
     .tech-list li {
+        font-size: 0.9rem;
         padding-left: 30px;
+        margin-bottom: 12px;
     }
     
     .tech-list li::before {
-        left: 5px;
+        width: 18px;
+        height: 18px;
+        left: 0;
+    }
+    
+    .tech-list li::after {
+        left: 4px;
+        font-size: 0.65rem;
+    }
+    
+    /* Image gallery optimizations */
+    .image-gallery {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .gallery-item {
+        aspect-ratio: 4/3;
+    }
+    
+    .image-overlay {
+        padding: 20px 15px 15px;
+    }
+    
+    .image-overlay p {
+        font-size: 0.95rem;
+    }
+    
+    /* Contact section optimizations */
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .contact-info,
+    .contact-form {
+        padding: 25px 20px;
+    }
+    
+    .info-item {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .info-item i {
+        font-size: 1.2rem;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .contact-form .btn-primary {
+        width: 100%;
+        padding: 14px;
+    }
+    
+    /* Footer optimizations */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.5rem;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .social-links a {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .copyright {
+        padding-top: 20px;
+        font-size: 0.8rem;
     }
 }
 
 /* Specific adjustments for very small screens */
 @media (max-width: 480px) {
     .hero-content h2 {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
-    .specialization-card {
-        padding: 20px;
+    .specialization-card,
+    .service-card {
+        padding: 20px 15px;
     }
     
     .about-image img {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
+    }
+    
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+    }
+    
+    /* Optimize card sizes */
+    .service-icon,
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+    }
+    
+    .service-icon i,
+    .card-icon i {
+        font-size: 1.3rem;
+    }
+    
+    /* Ensure tech list is readable */
+    .tech-list li {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+    
+    /* Make sure form elements are easy to interact with */
+    .form-group input,
+    .form-group textarea {
+        padding: 15px 12px;
     }
 }
 
@@ -1400,4 +1608,50 @@ footer::before {
 .specialization-card:hover h3,
 .specialization-card:hover .tech-list {
     transform: translateY(-5px);
-} 
+}
+
+/* Additional Mobile Optimizations */
+body.nav-open {
+    overflow: hidden; /* Prevent scrolling when mobile menu is open */
+}
+
+/* Optimize image loading */
+img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"] {
+    opacity: 0;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Touch-friendly hover states for mobile */
+@media (hover: none) {
+    .service-card,
+    .specialization-card {
+        transform: translateY(0) !important;
+        transition: box-shadow 0.3s ease;
+    }
+    
+    .service-card:active,
+    .specialization-card:active {
+        box-shadow: 0 10px 30px rgba(74, 90, 248, 0.2);
+    }
+    
+    .btn-primary:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 10px rgba(74, 90, 248, 0.4);
+    }
+}
+
+/* Improve form focus visibility for accessibility */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #4a5af8;
+    outline-offset: 2px;
+}

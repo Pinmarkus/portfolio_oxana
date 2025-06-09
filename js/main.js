@@ -9,13 +9,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle with improved handling
     const menuBtn = document.querySelector('.menu-btn');
     const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
     
     if (menuBtn) {
         menuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !menuBtn.contains(e.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+        
+        // Close menu when nav link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            });
         });
     }
 
@@ -75,6 +93,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearElement = document.getElementById('current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Handle lazy loaded images
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.onload = () => img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        lazyImages.forEach(img => {
+            img.classList.add('loaded');
+        });
     }
 
     // Apply initial language
