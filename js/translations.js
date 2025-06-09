@@ -135,7 +135,7 @@ const languageData = {
         },
         about: {
             title: "Despre Mine",
-            paragraph1: "Sunt un psiholog licențiat cu peste 10 ani de experiență în ajutarea indivizilor să depășească provocările personale și să-și îmbunătățească bunăstarea mentală.",
+            paragraph1: "Sunt un psiholog licențiat cu peste 10 ani de experiență în ajutarea oamenilor să depășească provocările personale și să-și îmbunătățească bunăstarea mentală.",
             paragraph2: "Abordarea mea combină tehnici bazate pe dovezi cu grija compasională pentru a crea un mediu sigur și de susținere pentru clienții mei.",
             paragraph3: "Mă specializez în gestionarea anxietății, tratamentul depresiei, consilierea relațiilor și dezvoltarea personală."
         },
